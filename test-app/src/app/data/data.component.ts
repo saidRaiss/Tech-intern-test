@@ -12,14 +12,14 @@ export class DataComponent implements OnInit {
   dataForm: FormGroup;
   // Regular expression to match a url http/https
   urlRegex =  '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-  // urlRegx =  '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)x';
-  // If https required
-  // urlRegx = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
-  // nameRegex = "^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$";
-  
+
+  urls: any[] = [];
+
   constructor(private firestore: AngularFirestore, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.getUrls();
+    console.log(this.urls);
     this.dataForm = this.formBuilder.group({
       name: [ null, Validators.required],
       url: [
@@ -44,6 +44,16 @@ export class DataComponent implements OnInit {
       return;
     }
     this.saveUrl(this.dataForm.value);
+  }
+  getUrls(): void{
+    this.firestore
+    .collection("savedUrls")
+    .get()
+    .subscribe((ss) => {
+      ss.docs.forEach((doc) => {
+        this.urls.push(doc.data());
+      });
+    });
   }
 
 }
