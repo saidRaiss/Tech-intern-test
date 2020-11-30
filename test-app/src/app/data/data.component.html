@@ -1,0 +1,26 @@
+<div class="example-container">
+  <div class="form-container">
+    <form [formGroup]="dataForm" (submit)="submit()">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Name
+        </mat-label>
+        <input matInput formControlName="name" minlength="4" required>
+        <mat-error *ngIf="dataForm.controls.name.touched && dataForm.controls.name.invalid">
+          <span *ngIf="dataForm.controls.name.errors.required">This field is mandatory.</span>
+          <span *ngIf="dataForm.controls.name.errors.minlength">Name must be at least 4 characters long.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Url
+        </mat-label>
+        <input matInput formControlName="url" required>
+        <mat-error *ngIf="dataForm.controls.url.touched && dataForm.controls.url.invalid">
+          <span *ngIf="dataForm.controls.url.errors.required">This field is mandatory.</span>
+          <span *ngIf="dataForm.controls.url.errors.pattern">This url is invalid.</span>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submet</button>
+    </form>
+  </div>
+</div>
+<!-- <app-list-urls></app-list-urls> -->

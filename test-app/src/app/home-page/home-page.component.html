@@ -1,0 +1,25 @@
+<div>
+<h1 class="title mat-display-1">Choose Your</h1>
+<h1 class="sub__title mat-display-1">Card And Pay</h1>
+
+<mat-grid-list [cols]="breakpoint" rowHeight = "110" (window:resize)="onResize($event)">
+   <mat-grid-tile [colspan] = "2" [rowspan] = "2">
+    <app-credit-card></app-credit-card>
+   </mat-grid-tile>
+   <mat-grid-tile [colspan] = "breakpointText" [rowspan] = "1">
+    <div class="text-inside-grid">
+        <div><span class="duration">Duration</span></div>
+        <div><span class="detail">3 Hours</span></div>
+
+    </div>
+   </mat-grid-tile>
+   <mat-grid-tile [colspan] = "breakpointText" [rowspan] = "1">
+   <div class="text-inside-grid">
+        <div><span class="total">Total</span></div>
+        <div><span class="detail">$ 260</span></div>
+
+    </div>
+   </mat-grid-tile>
+</mat-grid-list>
+<app-button title="Pay"></app-button>
+</div>

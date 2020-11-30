@@ -1,0 +1,23 @@
+.title {
+    color: #000000;
+    margin-bottom: auto;
+    font-weight: 600;
+}
+.sub__title {
+    margin-bottom: 30px;
+    color: #333333;
+}
+.text-inside-grid {
+    left: 0;
+    position: absolute;
+}
+.duration, .total {
+    font-size: medium;
+    font-weight: 700;
+    color: gray;
+}
+.detail {
+    font-size: x-large;
+    color: black;
+    font-weight: bold;
+}
